@@ -9,7 +9,8 @@ takeout(X, [F|R], [F|S]) :- takeout(X, R, S).
 input(P) :-
      read_integer(A),
      read_integer(B),
-     solve(P, B, A).
+     solve(P, B, A);
+     write('IMPOSSIBLE').
 
 solve(P, A, B) :-
      perm([1, 2, 3, 4, 5, 6, 7, 8], P),
