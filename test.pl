@@ -23,22 +23,17 @@ all_diff([X|Y]) :-  \+member(X, Y), all_diff(Y).
 all_diff([X]).
 */
 solve(P) :-
-     P = [5, 2, 6, 1, 7, 4, 8, 3].
-     write_in_format(P, [1, 2, 3, 4, 5, 6, 7, 8]).
+     write_in_format([5, 2, 6, 1, 7, 4, 8, 3]).
 
-write_in_format([X|Y], [A|B]) :-
-     write_in_line(X, [A|B]),
-     write_in_format(Y, [A|B]).
-
-write_in_line(X, []) :-
-     write('\n').
+write_in_format([X|Y]) :-
+     write_in_line(X, [1, 2, 3, 4, 5, 6, 7, 8]),
+     write_in_format(Y).
 
 write_in_line(X, [A|B]) :-
-     X < A ; X > A,
-     write('0 '),
-     write_in_line(X, B).
-
-write_in_line(X, [A|B]) :-
-    X = A,
-    write('1 '),
-    write_in_line(X, B).
+   X =:= A,
+   write('1 '),
+   write_in_line(X, B);
+   X \= A,
+   write('0 '),
+   write_in_line(X, B).
+write_in_line(X, []) :- write('\n').
